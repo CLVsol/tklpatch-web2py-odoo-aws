@@ -10,11 +10,11 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 
 #. Launch a new Amazon EC2 instance:
 
-	* Step 1: Choose an Amazon Machine Image (AMI) - Comnmunity AMIs: **turnkey-web2py-13.0-wheezy-amd64.ebs_3 - ami-09b70d14**
+	* Step 1: Choose an Amazon Machine Image (AMI) - Comnmunity AMIs: **turnkey-web2py-13.0-wheezy-amd64.ebs_4 - ami-fdb70de0**
 	* Step 2: Choose an Instance Type: **t1.micro**
 	* Step 3: Configure Instance Details: (leave dafaults)
 	* Step 4: Add Storage:
-		* Volume Type: **Magnetic**
+		* Volume Type: **General Purpose (SSD)**
 	* Step 5: Tag Instance: (leave dafaults)
 	* Step 6: Configure Security Group: 
 		* Security group name: **tkl-web2py-odoo-aws**
@@ -34,7 +34,6 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 		22(SSH)           0.0.0.0/0
 		80(HTTP)          0.0.0.0/0
 		443(HTTPS)        0.0.0.0/0
-        5432(PostgreSQL) <VPC Network> (172.31.0.0/16)
         12320(Web Shell)  0.0.0.0/0  (disable)
 		12321(Webmin)     0.0.0.0/0  (disable)
 
