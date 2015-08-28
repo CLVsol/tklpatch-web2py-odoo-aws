@@ -1,0 +1,40 @@
+#!/bin/bash -ex
+# executed after apply-overlay
+
+apt-get update
+echo "------------------------"
+echo " InstallNeeded Packages "
+echo "---------- -------------"
+apt-get -y install python-psycopg2
+apt-get -y install python-lxml
+apt-get -y install python-tz
+apt-get -y install python-yaml
+apt-get -y install python-reportlab
+apt-get -y install python-mako
+apt-get -y install python-pychart
+apt-get -y install python-werkzeug
+apt-get -y install python-pybabel
+apt-get -y install python-dateutil
+apt-get -y install python-openid
+apt-get -y install python-imaging
+apt-get -y install python-psutil
+apt-get -y install python-docutils
+apt-get -y install python-unittest2
+apt-get -y install python-mock
+apt-get -y install python-jinja2
+apt-get -y install python-pypdf
+apt-get -y install python-passlib
+apt-get -y install python-requests
+apt-get -y install python-decorator
+wget http://gdata-python-client.googlecode.com/files/gdata-2.0.17.tar.gz
+tar -zxvf gdata-2.0.17.tar.gz
+cd gdata-2.0.17
+python setup.py install
+cd ..
+
+echo "------------------------"
+echo " Make SSL work properly "
+echo "------------------------"
+a2enmod ssl proxy_http headers rewrite
+a2ensite openerp-ssl
+/etc/init.d/apache2 restart

@@ -1,0 +1,25 @@
+#!/bin/bash -ex
+# executed after apply-overlay
+
+OPENERP_DIR=/opt/openerp
+ODOO_DIR=/opt/openerp/odoo
+
+echo "----------------------------"
+echo "  Install Odoo as a service "
+echo "----------------------------"
+chmod 666 /opt/openerp/openerp.init 
+chmod +x /opt/openerp/openerp.init
+cd /etc/init.d
+ln -s $OPENERP_DIR/openerp.init openerp-server
+update-rc.d openerp-server defaults
+touch /var/log/openerp-server.log
+chown openerp /var/log/openerp-server.log
+touch /var/run/openerp-server.pid
+chown openerp /var/run/openerp-server.pid
+chown -R openerp:openerp $ODOO_DIR
+
+echo "------------------------"
+echo " Make SSL work properly "
+echo "------------------------"
+a2enmod ssl proxy_http headers rewrite
+a2ensite openerp-ssl

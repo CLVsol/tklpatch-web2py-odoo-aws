@@ -1,0 +1,17 @@
+#!/bin/bash -ex
+# executed before apply-overlay
+
+OPENERP_PASS=openerp
+OPENERP_DIR=/opt/openerp
+
+echo "-------------------------"
+echo " Add system user openerp "
+echo "-------------------------"
+echo | adduser --disabled-password openerp
+usermod -p $(echo $OPENERP_PASS | openssl passwd -1 -stdin) openerp
+
+echo "--------------------------"
+echo " Create openerp directory "
+echo "--------------------------"
+mkdir $OPENERP_DIR
+chown -R openerp:openerp $OPENERP_DIR
