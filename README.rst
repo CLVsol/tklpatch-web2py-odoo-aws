@@ -99,4 +99,36 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 
 #. Change manually, using Webmin, the passwords for the accounts:
 
-	* openuser (PostgreSQL)
+	* openerp (Linux)
+
+#. Change manually, editing the Odoo configuration files (/opt/openerp/odoo/**openerp-server.conf**, /opt/openerp/odoo/**openerp-server_man.conf**), the passwords for the accounts:
+
+	* admin (Odoo server - admin_passwd)
+	* openuser (account on PostgreSQL - db_password)
+
+#. Update the Security Group:
+
+	Security Group: tkl-lamp-odoo-aws (Inbound)::
+
+		Port (Service)    Source
+		---------------------------------------
+		22(SSH)           0.0.0.0/0
+		80(HTTP)          0.0.0.0/0
+		443(HTTPS)        0.0.0.0/0
+		8069(Odoo)        0.0.0.0/0  (disable)
+		12320(Web Shell)  0.0.0.0/0  (disable)
+		12321(Webmin)     0.0.0.0/0  (disable)
+		12325(Odoo)       0.0.0.0/0
+
+#. Change manually, editing the Odoo configuration files (/opt/openerp/odoo/**openerp-server.conf**, /opt/openerp/odoo/**openerp-server_man.conf**), the db_host::
+
+	# db_host = 127.0.0.1
+	db_host = <PostgreSQL server>
+
+#. To stop and start the Odoo server, use the following commands (as root):
+
+	::
+
+		/opt/openerp/openerp.init stop
+
+		/opt/openerp/openerp.init start
