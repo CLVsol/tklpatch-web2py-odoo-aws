@@ -125,6 +125,14 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
     # db_host = 127.0.0.1
     db_host = <PostgreSQL server>
 
+#. Change manually, editing the Odoo configuration files (/opt/openerp/odoo/**openerp-server.conf**, /opt/openerp/odoo/**openerp-server_man.conf**), the db_host::
+
+    # dbfilter = .*
+    dbfilter = <database name>
+
+    # db_name = False
+    db_name = <database name>
+
 #. To stop and start the Odoo server, use the following commands (as root):
 
     ::
