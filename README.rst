@@ -127,6 +127,9 @@ This project will help you install `Odoo 8.0 <https://www.odoo.com/>`_ over a `T
 
 #. Change manually, editing the Odoo configuration files (/opt/openerp/odoo/**openerp-server.conf**, /opt/openerp/odoo/**openerp-server_man.conf**), the db_host::
 
+    # db_name = False
+    db_name = <database name>
+
     # dbfilter = .*
     dbfilter = <database name>
 
